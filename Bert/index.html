@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>印坤的小饭店</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="loginView" class="login-view" aria-labelledby="loginTitle">
+        <div class="login-panel">
+          <p class="eyebrow">欢迎光临</p>
+          <h1 id="loginTitle">印坤的小饭店</h1>
+          <p class="login-copy">输入密码后进入点餐系统。</p>
+          <form id="loginForm" class="login-form">
+            <label for="passwordInput">访问密码</label>
+            <div class="password-row">
+              <input
+                id="passwordInput"
+                type="password"
+                inputmode="numeric"
+                autocomplete="current-password"
+                placeholder="请输入密码"
+              />
+              <button type="submit">进入</button>
+            </div>
+            <p id="loginError" class="form-message" role="alert"></p>
+          </form>
+        </div>
+      </section>
+
+      <section id="restaurantView" class="restaurant-view" hidden>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">线上点餐系统</p>
+            <h1>印坤的小饭店</h1>
+          </div>
+          <button id="logoutBtn" class="ghost-button" type="button">退出</button>
+        </header>
+
+        <nav class="role-switcher" aria-label="身份选择">
+          <button id="guestRoleBtn" class="role-button active" type="button" data-role="guest">客人点餐</button>
+          <button id="chefRoleBtn" class="role-button" type="button" data-role="chef">厨师后台</button>
+        </nav>
+
+        <section id="guestPanel" class="workspace" aria-labelledby="guestTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">客人身份</p>
+              <h2 id="guestTitle">选择今天想吃的菜</h2>
+            </div>
+            <div class="cart-summary">
+              <span id="selectedCount">0</span>
+              <span>道已选</span>
+            </div>
+          </div>
+
+          <div id="menuGrid" class="menu-grid"></div>
+
+          <aside class="order-bar" aria-label="已选菜品">
+            <div>
+              <p class="order-label">当前订单</p>
+              <p id="selectedItems" class="selected-items">还没有选择菜品</p>
+            </div>
+            <button id="submitOrderBtn" class="primary-button" type="button" disabled>提交订单</button>
+          </aside>
+        </section>
+
+        <section id="chefPanel" class="workspace" aria-labelledby="chefTitle" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">厨师身份</p>
+              <h2 id="chefTitle">客人订单</h2>
+            </div>
+            <div class="chef-actions">
+              <button id="refreshOrdersBtn" class="ghost-button" type="button">刷新订单</button>
+              <button id="clearOrdersBtn" class="ghost-button danger" type="button">清空订单</button>
+            </div>
+          </div>
+
+          <div id="ordersList" class="orders-list"></div>
+        </section>
+
+        <footer class="site-footer">
+          菜品图片来自 Wikimedia Commons，详细来源见项目里的 IMAGE_CREDITS.md。
+        </footer>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
