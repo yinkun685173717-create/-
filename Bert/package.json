@@ -1,0 +1,13 @@
+{
+  "name": "yinkun-restaurant",
+  "version": "1.0.0",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check public/app.js && node --check server.js && node --check api/orders.js && node --check lib/orders.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
